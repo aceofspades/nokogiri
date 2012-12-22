@@ -1,5 +1,5 @@
-require 'stringio'
-require 'nokogiri/xml/node/save_options'
+#require 'stringio'
+#require 'nokogiri/xml/node/save_options'
 
 module Nokogiri
   module XML

@@ -1,11 +1,11 @@
-require 'nokogiri/html/entity_lookup'
-require 'nokogiri/html/document'
-require 'nokogiri/html/document_fragment'
-require 'nokogiri/html/sax/parser_context'
-require 'nokogiri/html/sax/parser'
-require 'nokogiri/html/sax/push_parser'
-require 'nokogiri/html/element_description'
-require 'nokogiri/html/element_description_defaults'
+#require 'nokogiri/html/entity_lookup'
+#require 'nokogiri/html/document'
+#require 'nokogiri/html/document_fragment'
+#require 'nokogiri/html/sax/parser_context'
+#require 'nokogiri/html/sax/parser'
+#require 'nokogiri/html/sax/push_parser'
+#require 'nokogiri/html/element_description'
+#require 'nokogiri/html/element_description_defaults'
 
 module Nokogiri
   class << self

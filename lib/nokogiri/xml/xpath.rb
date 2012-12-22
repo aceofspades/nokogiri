@@ -1,4 +1,4 @@
-require 'nokogiri/xml/xpath/syntax_error'
+#require 'nokogiri/xml/xpath/syntax_error'
 
 module Nokogiri
   module XML

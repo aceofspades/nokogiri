@@ -4,10 +4,10 @@
 # from Racc grammer file "".
 #
 
-require 'racc/parser.rb'
+#require 'racc/parser.rb'
 
 
-require 'nokogiri/css/parser_extras'
+#require 'nokogiri/css/parser_extras'
 module Nokogiri
   module CSS
     class Parser < Racc::Parser

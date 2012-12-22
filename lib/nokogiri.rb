@@ -1,38 +1,40 @@
 # -*- coding: utf-8 -*-
 # Modify the PATH on windows so that the external DLLs will get loaded.
 
-require 'rbconfig'
-ENV['PATH'] = [File.expand_path(
-  File.join(File.dirname(__FILE__), "..", "ext", "nokogiri")
-), ENV['PATH']].compact.join(';') if RbConfig::CONFIG['host_os'] =~ /(mswin|mingw)/i
+unless defined?(RUBY_MOTION)
+  require 'rbconfig'
+  ENV['PATH'] = [File.expand_path(
+    File.join(File.dirname(__FILE__), "..", "ext", "nokogiri")
+  ), ENV['PATH']].compact.join(';') if RbConfig::CONFIG['host_os'] =~ /(mswin|mingw)/i
 
-if defined?(RUBY_ENGINE) && RUBY_ENGINE == "jruby"
-  # The line below caused a problem on non-GAE rack environment.
-  # unless defined?(JRuby::Rack::VERSION) || defined?(AppEngine::ApiProxy)
-  #
-  # However, simply cutting defined?(JRuby::Rack::VERSION) off resulted in
-  # an unable-to-load-nokogiri problem. Thus, now, Nokogiri checks the presense
-  # of appengine-rack.jar in $LOAD_PATH. If Nokogiri is on GAE, Nokogiri
-  # should skip loading xml jars. This is because those are in WEB-INF/lib and 
-  # already set in the classpath.
-  unless $LOAD_PATH.to_s.include?("appengine-rack")
-    require 'isorelax.jar'
-    require 'jing.jar'
-    require 'nekohtml.jar'
-    require 'nekodtd.jar'
-    require 'xercesImpl.jar'
+  if defined?(RUBY_ENGINE) && RUBY_ENGINE == "jruby"
+    # The line below caused a problem on non-GAE rack environment.
+    # unless defined?(JRuby::Rack::VERSION) || defined?(AppEngine::ApiProxy)
+    #
+    # However, simply cutting defined?(JRuby::Rack::VERSION) off resulted in
+    # an unable-to-load-nokogiri problem. Thus, now, Nokogiri checks the presense
+    # of appengine-rack.jar in $LOAD_PATH. If Nokogiri is on GAE, Nokogiri
+    # should skip loading xml jars. This is because those are in WEB-INF/lib and
+    # already set in the classpath.
+    unless $LOAD_PATH.to_s.include?("appengine-rack")
+      require 'isorelax.jar'
+      require 'jing.jar'
+      require 'nekohtml.jar'
+      require 'nekodtd.jar'
+      require 'xercesImpl.jar'
+    end
   end
-end
 
-require 'nokogiri/nokogiri'
-require 'nokogiri/version'
-require 'nokogiri/syntax_error'
-require 'nokogiri/xml'
-require 'nokogiri/xslt'
-require 'nokogiri/html'
-require 'nokogiri/decorators/slop'
-require 'nokogiri/css'
-require 'nokogiri/html/builder'
+  require 'nokogiri/nokogiri'
+  require 'nokogiri/version'
+  require 'nokogiri/syntax_error'
+  require 'nokogiri/xml'
+  require 'nokogiri/xslt'
+  require 'nokogiri/html'
+  require 'nokogiri/decorators/slop'
+  require 'nokogiri/css'
+  require 'nokogiri/html/builder'
+end
 
 # Nokogiri parses and searches XML/HTML very quickly, and also has
 # correctly implemented CSS3 selector support as well as XPath support.
@@ -59,6 +61,7 @@ require 'nokogiri/html/builder'
 #
 # See Nokogiri::XML::Node#css for more information about CSS searching.
 # See Nokogiri::XML::Node#xpath for more information about XPath searching.
+
 module Nokogiri
   class << self
     ###

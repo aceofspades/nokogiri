@@ -7,7 +7,7 @@
 module Nokogiri
 module CSS
 class Tokenizer # :nodoc:
-  require 'strscan'
+  #require 'strscan'
 
   class ScanError < StandardError ; end
 

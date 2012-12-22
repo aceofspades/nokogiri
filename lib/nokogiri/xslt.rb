@@ -1,4 +1,4 @@
-require 'nokogiri/xslt/stylesheet'
+#require 'nokogiri/xslt/stylesheet'
 
 module Nokogiri
   class << self
